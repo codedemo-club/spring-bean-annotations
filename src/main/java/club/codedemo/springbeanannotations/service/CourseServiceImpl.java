@@ -1,7 +1,10 @@
 package club.codedemo.springbeanannotations.service;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+/**
+ * 5. @Service 注解
+ */
+@Service
 public class CourseServiceImpl implements CourseService {
 }

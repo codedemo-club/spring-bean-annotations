@@ -25,8 +25,15 @@ public class PerformanceAspect {
         // 获取切点方法的类名、方法名并打印执行时间
         String className = joinPoint.getTarget().getClass().getName();
         String methodName = joinPoint.getSignature().getName();
+        Long costTime = TimeUnit.NANOSECONDS.toMillis(end - start);
         System.out.println("执行:" + className + "->" + methodName +
-                "耗时：" + TimeUnit.NANOSECONDS.toMillis(end - start) + "ms");
+                "耗时：" + costTime  + "ms");
+
+        if (costTime > 1000) {
+            // 耗时大于1秒的认为是慢查询，根据实际情况进行后续操作
+            // 比如可以实时的短信预警、钉钉预警、邮件预警、推送到日志服务器等
+        }
+
         return returnValue;
     }
 }
